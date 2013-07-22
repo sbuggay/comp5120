@@ -2,8 +2,12 @@
 
 <head>
 
-
+<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
 </head>
+
+
+
+<div class="container">
 
 <body>
 <div class="navbar navbar-inverse">
@@ -12,14 +16,14 @@
     <ul class="nav">
       <li class="active"><a href="#">Home</a></li>
       <li><a href="#">Link</a></li>
-      <li><a href="#">Link</a></li>
     </ul>
   </div>
 </div>
 
-
+<h2>Database Test</h2>
+<pre>
 <?php
-echo "database test";
+
 $dbh = pg_connect("host=localhost dbname=test user=postgres password=hendrix");
 if (!$dbh) {
 	die("Error in connection: " . pg_last_error());
@@ -41,7 +45,8 @@ while ($row = pg_fetch_array($result)) {
 pg_free_result($result);
 pg_close($dbh);
 ?>
-
+</pre>
+</div>
 
 </body>
 </html>
