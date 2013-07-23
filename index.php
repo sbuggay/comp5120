@@ -10,7 +10,7 @@
 
 <?php
 echo "database test";
-$dbh = pg_connect("host=localhost dbname=test user=postgres");
+$dbh = pg_connect("host=localhost dbname=test user=postgres password=hendrix");
 if (!$dbh) {
 	die("Error in connection: " . pg_last_error());
 }
