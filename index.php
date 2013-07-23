@@ -15,7 +15,10 @@
     <a class="brand" href="#">Bay View Community Hospital</a>
     <ul class="nav">
       <li class="active"><a href="#">Home</a></li>
-      <li><a href="#">Link</a></li>
+      <li><a href="#">Patient Bill</a></li>
+      <li><a href="#">Room Utilization Report</a></li>
+      <li><a href="#">Patient Report</a></li>
+      <li><a href="#">Physician Report</a></li>
     </ul>
   </div>
 </div>
@@ -26,7 +29,7 @@
 
 $dbh = pg_connect("host=localhost dbname=test user=postgres password=hendrix");
 if (!$dbh) {
-	die("Error in connection: " . pg_last_error());
+	echo("Error in connection: " . pg_last_error());
 }
 
 $sql = "SELECT * FROM People";
@@ -34,7 +37,7 @@ $result = pg_query($dbh, $sql);
 
 
 if (!$result) {
-	die("Error in SQL query: " . pg_last_error());
+	echo("Error in SQL query: " . pg_last_error());
 }
 
 while ($row = pg_fetch_array($result)) {
@@ -61,7 +64,8 @@ pg_close($dbh);
      <p>
 
 
-     <input type="submit" name="submit">
+     <input class="btn btn-primary" type="submit" name="submit">
+
 </form> 
 
 </div>
