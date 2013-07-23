@@ -46,6 +46,24 @@ pg_free_result($result);
 pg_close($dbh);
 ?>
 </pre>
+<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+
+
+     id: <br> <input type="text" name="ccode" size="2">  
+
+
+     <p>
+
+
+     name: <br> <input type="text" name="cname">       
+
+
+     <p>
+
+
+     <input type="submit" name="submit">
+</form> 
+
 </div>
 
 </body>
