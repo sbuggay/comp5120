@@ -1,14 +1,5 @@
-Technologies Used
+comp5120 Deliverables
 --------
-- PHP5
-- Apache2
-- PostgresQL 9.1
-- jQuery 1.7
-- Bootstrap 2
-
-comp5120 Roadmap
-========
-
 
 Conceptual model specification
 --------
@@ -25,6 +16,16 @@ Implementation model specification
 
 Database implementation
 --------
-- Create table commands
-- Insert commands
-- 
+- Create table commands  [[link](https://github.com/sbuggay/comp5120/blob/master/table.sql)]
+- Insert commands [[link](https://github.com/sbuggay/comp5120/blob/master/table.sql)]
+- Source Code [[link](https://github.com/sbuggay/comp5120)]
+- Generated Output
+- URL [[link](http://devel-base.net/comp5120/)]
+
+Technologies Used
+--------
+- PHP5
+- Apache2
+- PostgresQL 9.1
+- jQuery 1.7
+- Bootstrap 2
