@@ -5,11 +5,17 @@
   <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
 </head>
 
-  <body>
+<body>
 
-    <div class="navbar navbar-inverse">
-      <div class="navbar-inner">
-        <a class="brand" href="index.php">Bay View Community Hospital</a>
+  <div class="navbar navbar-inverse">
+    <div class="navbar-inner">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <a class="brand" href="index.php">Bay View Community Hospital</a>
+      <div class="nav-collapse collapse">
         <ul class="nav">
           <li class="active"><a href="index.php">Home</a></li>
           <li><a href="newpatient.php">New Patient</a></li>
@@ -20,8 +26,9 @@
         </ul>
       </div>
     </div>
+  </div>
 
-    <div class="container">
+  <div class="container">
 
     <ul class="nav nav-tabs" id="tabs">
       <li class="active"><a href="#patients" data-toggle="tab">Patients</a></li>

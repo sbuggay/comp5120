@@ -9,7 +9,13 @@
 
   <div class="navbar navbar-inverse">
     <div class="navbar-inner">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
       <a class="brand" href="index.php">Bay View Community Hospital</a>
+      <div class="nav-collapse collapse">
       <ul class="nav">
         <li><a href="index.php">Home</a></li>
         <li><a href="newpatient.php">New Patient</a></li>
@@ -18,14 +24,15 @@
         <li><a href="#">Patient Report</a></li>
         <li><a href="#">Physician Report</a></li>
       </ul>
+      </div>
     </div>
   </div>
 
   <div class="container">
 
-    <form action="insertPatient.php" class="well" method="post">
+    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" class="well" method="post">
       <fieldset>
-        <legend>New Patient</legend>
+        <legend>Get Patient</legend>
         <label>Patient ID:</label> <input type="number" name="cid"> 
         <br>
         <input class="btn btn-primary" type="submit" name="submit">
@@ -38,7 +45,7 @@
       echo("Error in connection: " . pg_last_error());
     }
 
-    $sql = "SELECT " . $_POST['cid'] . " FROM Patient";
+    $sql = "SELECT * FROM Patient WHERE patientid=" . $_POST['cid'];
     $result = pg_query($dbh, $sql);
     if (!$result) {
       echo("Error in SQL query: " . pg_last_error());
@@ -63,6 +70,7 @@
 
     pg_free_result($result);
     pg_close($dbh);
+    ?>
 
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
     <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
