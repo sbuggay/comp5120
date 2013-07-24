@@ -34,47 +34,201 @@
       </div>
     </div>
 
+    <ul class="nav nav-tabs" id="tabs">
+      <li class="active"><a href="#patients" data-toggle="tab">Patients</a></li>
+      <li><a href="#insurances" data-toggle="tab">Insurances</a></li>
+      <li><a href="#doctors" data-toggle="tab">Doctors</a></li>
+      <li><a href="#rooms" data-toggle="tab">Rooms</a></li>
+      <li><a href="#beds" data-toggle="tab">Beds</a></li>
+      <li><a href="#treatments" data-toggle="tab">Treatments</a></li>
+      <li><a href="#employees" data-toggle="tab">Employees</a></li>
+    </ul>
 
-    <?php
+    <div class="tab-content">
+      <div class="tab-pane active" id="patients">
+        <?php
+        $dbh = pg_connect("host=localhost dbname=group5db user=postgres password=hendrix");
+        if (!$dbh) {
+          echo("Error in connection: " . pg_last_error());
+        }
 
-// insert form into database
-    if ($_POST['submit']) {
-    // attempt a connection
-      $dbh = pg_connect("host=localhost dbname=group5db user=postgres password=hendrix");
-      if (!$dbh) {
-        die("Error in connection: " . pg_last_error());
-      }
-    // escape strings in input data
-      $id = pg_escape_string($_POST['cid']);
-      $name = pg_escape_string($_POST['cname']);
-      $street = pg_escape_string($_POST['cstreet']);
-      $city = pg_escape_string($_POST['ccity']);
-      $state = pg_escape_string($_POST['cstate']);
-      $zip = pg_escape_string($_POST['czip']);
-      $adate = pg_escape_string($_POST['cadate']);
-      $ddate = pg_escape_string($_POST['cddate']);
-      $doctorid = pg_escape_string($_POST['cdid']);
-      $insurance = pg_escape_string($_POST['cinsurancename']);
-      $policy = pg_escape_string($_POST['cpolicy']);
-      $roomid = pg_escape_string($_POST['croomid']);
-      $bedlabel = pg_escape_string($_POST['cbedlabel']);
+        $sql = "SELECT * FROM Patient";
+        $result = pg_query($dbh, $sql);
+        if (!$result) {
+          echo("Error in SQL query: " . pg_last_error());
+        }
 
-    // execute query
-      $sql = "INSERT INTO Patient VALUES('$id', '$name', '$street', '$city', '$state', '$zip', '$adate', '$ddate', '$doctorid', '$insurance', '$policy', '$roomid', '$bedlabel')";
-      $result = pg_query($dbh, $sql);
+        while ($row = pg_fetch_array($result)) {
+          echo "<pre>";
+          echo "ID: " . $row[0] . "<br />";
+          echo "Name: " . $row[1] . "<br />";
+          echo "Street: " . $row[2] . "<br />";
+          echo "City: " . $row[3] . "<br />";
+          echo "State: " . $row[4] . "<br />";
+          echo "ZIP: " . $row[5] . "<br />";
+          echo "Admitted Date: " . $row[6] . "<br />";
+          echo "Discharged Date: " . $row[7] . "<br />";
+          echo "Doctor ID: " . $row[8] . "<br />";
+          echo "Policy Number: " . $row[9] . "<br />";
+          echo "Room ID: " . $row[10] . "<br />";
+          echo "Bed Label: " . $row[11] . "<br />";
+          echo "</pre>";
+        }
 
-      if (!$result) {
-        die("Error in SQL query: " . pg_last_error());
-      }
+        pg_free_result($result);
+        pg_close($dbh);
+        ?> 
+      </div>
+      <div class="tab-pane" id="insurances">
+        <?php
+        $dbh = pg_connect("host=localhost dbname=group5db user=postgres password=hendrix");
+        if (!$dbh) {
+          echo("Error in connection: " . pg_last_error());
+        }
 
-      echo "Data successfully inserted!";
+        $sql = "SELECT * FROM Insurance";
+        $result = pg_query($dbh, $sql);
+        if (!$result) {
+          echo("Error in SQL query: " . pg_last_error());
+        }
 
-      pg_free_result($result);
-      pg_close($dbh);
-    }
-    ?>
-    
-    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" class="well" method="post">
+        while ($row = pg_fetch_array($result)) {
+          echo "<pre>";
+          echo "Name: " . $row[0] . "<br />";
+          echo "Phone: " . $row[1] . "<br />";
+          echo "</pre>";
+        }
+
+        pg_free_result($result);
+        pg_close($dbh);
+        ?>
+      </div>
+      <div class="tab-pane" id="doctors">
+        <?php
+        $dbh = pg_connect("host=localhost dbname=group5db user=postgres password=hendrix");
+        if (!$dbh) {
+          echo("Error in connection: " . pg_last_error());
+        }
+
+        $sql = "SELECT * FROM Doctor";
+        $result = pg_query($dbh, $sql);
+        if (!$result) {
+          echo("Error in SQL query: " . pg_last_error());
+        }
+
+        while ($row = pg_fetch_array($result)) {
+          echo "<pre>";
+          echo "ID: " . $row[0] . "<br />";
+          echo "Name: " . $row[1] . "<br />";
+          echo "Phone: " . $row[1] . "<br />";
+          echo "</pre>";
+        }
+
+        pg_free_result($result);
+        pg_close($dbh);
+        ?>
+      </div>
+      <div class="tab-pane" id="rooms">
+        <?php
+        $dbh = pg_connect("host=localhost dbname=group5db user=postgres password=hendrix");
+        if (!$dbh) {
+          echo("Error in connection: " . pg_last_error());
+        }
+
+        $sql = "SELECT * FROM Room";
+        $result = pg_query($dbh, $sql);
+        if (!$result) {
+          echo("Error in SQL query: " . pg_last_error());
+        }
+
+        while ($row = pg_fetch_array($result)) {
+          echo "<pre>";
+          echo "ID: " . $row[0] . "<br />";
+          echo "Private: " . $row[1] . "<br />";
+          echo "Number of Beds: " . $row[2] . "<br />";
+          echo "Cost: " . $row[3] . "<br />";
+          echo "</pre>";
+        }
+
+        pg_free_result($result);
+        pg_close($dbh);
+        ?>
+      </div>
+      <div class="tab-pane" id="beds">
+        <?php
+        $dbh = pg_connect("host=localhost dbname=group5db user=postgres password=hendrix");
+        if (!$dbh) {
+          echo("Error in connection: " . pg_last_error());
+        }
+
+        $sql = "SELECT * FROM Bed";
+        $result = pg_query($dbh, $sql);
+        if (!$result) {
+          echo("Error in SQL query: " . pg_last_error());
+        }
+
+        while ($row = pg_fetch_array($result)) {
+          echo "<pre>";
+          echo "ID: " . $row[0] . "<br />";
+          echo "Label: " . $row[1] . "<br />";
+          echo "</pre>";
+        }
+
+        pg_free_result($result);
+        pg_close($dbh);
+        ?>
+      </div>
+      <div class="tab-pane" id="treatments">
+        <?php
+        $dbh = pg_connect("host=localhost dbname=group5db user=postgres password=hendrix");
+        if (!$dbh) {
+          echo("Error in connection: " . pg_last_error());
+        }
+
+        $sql = "SELECT * FROM Treatment";
+        $result = pg_query($dbh, $sql);
+        if (!$result) {
+          echo("Error in SQL query: " . pg_last_error());
+        }
+
+        while ($row = pg_fetch_array($result)) {
+          echo "<pre>";
+          echo "Treatment: " . $row[0] . "<br />";
+          echo "Cost: " . $row[1] . "<br />";
+          echo "Ordered: " . $row[1] . "<br />";
+          echo "</pre>";
+        }
+
+        pg_free_result($result);
+        pg_close($dbh);
+        ?>
+      </div>
+      <div class="tab-pane" id="employees">
+        <?php
+        $dbh = pg_connect("host=localhost dbname=group5db user=postgres password=hendrix");
+        if (!$dbh) {
+          echo("Error in connection: " . pg_last_error());
+        }
+
+        $sql = "SELECT * FROM EmployeeCost";
+        $result = pg_query($dbh, $sql);
+        if (!$result) {
+          echo("Error in SQL query: " . pg_last_error());
+        }
+
+        while ($row = pg_fetch_array($result)) {
+          echo "<pre>";
+          echo "Type: " . $row[0] . "<br />";
+          echo "Cost: " . $row[1] . "<br />";
+          echo "</pre>";
+        }
+        pg_free_result($result);
+        pg_close($dbh);
+        ?>
+      </div>
+    </div>
+
+    <form action="insertPatient.php" class="well" method="post">
       <fieldset>
         <legend>New Patient</legend>
         <label>Patient ID:</label> <input type="number" name="cid"> 
@@ -95,122 +249,12 @@
       </fieldset>
     </form>
 
-    <h3>Patients</h3>
-    <?php
-    $dbh = pg_connect("host=localhost dbname=group5db user=postgres password=hendrix");
-    if (!$dbh) {
-      echo("Error in connection: " . pg_last_error());
-    }
-
-    $sql = "SELECT * FROM Patient";
-    $result = pg_query($dbh, $sql);
-    if (!$result) {
-      echo("Error in SQL query: " . pg_last_error());
-    }
-
-    while ($row = pg_fetch_array($result)) {
-      echo "<pre>";
-      echo "ID: " . $row[0] . "<br />";
-      echo "Name: " . $row[1] . "<br />";
-      echo "Street: " . $row[2] . "<br />";
-      echo "City: " . $row[3] . "<br />";
-      echo "State: " . $row[4] . "<br />";
-      echo "ZIP: " . $row[5] . "<br />";
-      echo "Admitted Date: " . $row[6] . "<br />";
-      echo "Discharged Date: " . $row[7] . "<br />";
-      echo "Doctor ID: " . $row[8] . "<br />";
-      echo "Policy Number: " . $row[9] . "<br />";
-      echo "Room ID: " . $row[10] . "<br />";
-      echo "Bed Label: " . $row[11] . "<br />";
-      echo "</pre>";
-    }
-
-    pg_free_result($result);
-    pg_close($dbh);
-    ?> 
-
-    <h3>Insurances</h3>
-    <?php
-    $dbh = pg_connect("host=localhost dbname=group5db user=postgres password=hendrix");
-    if (!$dbh) {
-      echo("Error in connection: " . pg_last_error());
-    }
-
-    $sql = "SELECT * FROM Insurance";
-    $result = pg_query($dbh, $sql);
-    if (!$result) {
-      echo("Error in SQL query: " . pg_last_error());
-    }
-
-    while ($row = pg_fetch_array($result)) {
-      echo "<pre>";
-      echo "Name: " . $row[0] . "<br />";
-      echo "Phone: " . $row[1] . "<br />";
-      echo "</pre>";
-    }
-
-    pg_free_result($result);
-    pg_close($dbh);
-    ?>
-
-    <h3>Treatment Types</h3>
-    <?php
-    $dbh = pg_connect("host=localhost dbname=group5db user=postgres password=hendrix");
-    if (!$dbh) {
-      echo("Error in connection: " . pg_last_error());
-    }
-
-    $sql = "SELECT * FROM TreatmentType";
-    $result = pg_query($dbh, $sql);
-    if (!$result) {
-      echo("Error in SQL query: " . pg_last_error());
-    }
-
-    while ($row = pg_fetch_array($result)) {
-      echo "<pre>";
-      echo "Treatment: " . $row[0] . "<br />";
-      echo "Cost: " . $row[1] . "<br />";
-      echo "Ordered: " . $row[2] . "<br />";
-      echo "</pre>";
-    }
-
-    pg_free_result($result);
-    pg_close($dbh);
-    ?>
-
-    <h3>Employee Costs</h3>
-    <?php
-    $dbh = pg_connect("host=localhost dbname=group5db user=postgres password=hendrix");
-    if (!$dbh) {
-      echo("Error in connection: " . pg_last_error());
-    }
-
-    $sql = "SELECT * FROM EmployeeCost";
-    $result = pg_query($dbh, $sql);
-    if (!$result) {
-      echo("Error in SQL query: " . pg_last_error());
-    }
-    
-    while ($row = pg_fetch_array($result)) {
-      echo "<pre>";
-      echo "Type: " . $row[0] . "<br />";
-      echo "Cost: " . $row[1] . "<br />";
-      echo "</pre>";
-    }
-    
-    pg_free_result($result);
-    pg_close($dbh);
-    ?>
-
-
-
-  </div>
-
-  <script type="text/javascript">
-    jQuery(document).ready(function ($) {
-      $(".tabs").tabs();
-    });
-  </script>    
-  <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
-</body>
-</html>
+    <script type="text/javascript">
+      jQuery(document).ready(function ($) {
+        $(".tabs").tabs();
+      });
+    </script>    
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
+    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+  </body>
+  </html>
