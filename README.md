@@ -1,4 +1,4 @@
-comp5120 Deliverables
+BVCH Deliverables
 --------
 
 Conceptual model specification
@@ -21,6 +21,13 @@ Database implementation
 - Source Code [[link](https://github.com/sbuggay/comp5120)]
 - Generated Output
 - URL [[link](http://devel-base.net/comp5120/)]
+
+BVHC forms and reports
+--------
+- [Patient bill](http://devel-base.net/comp5120/patientbill.php) [src](https://github.com/sbuggay/comp5120/blob/master/patientbill.php)
+- [Room utilization report](http://devel-base.net/comp5120/roomutilizationreport.php) [src](https://github.com/sbuggay/comp5120/blob/master/roomutilizationreport.php)
+- [Patient report](http://devel-base.net/comp5120/patientreport.php) [src](https://github.com/sbuggay/comp5120/blob/master/patientreport.php)
+- [Physician report](http://devel-base.net/comp5120/physicianreport.php) [src](https://github.com/sbuggay/comp5120/blob/master/physicianreport.php)
 
 Technologies Used
 --------
