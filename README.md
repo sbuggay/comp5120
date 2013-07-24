@@ -1,4 +1,4 @@
-comp5120 Roadmap
+comp5120 Deliverables
 --------
 
 Conceptual model specification
