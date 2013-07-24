@@ -10,7 +10,7 @@ Conceptual model specification
 Implementation model specification
 --------
 - Relational schemas [[link](https://github.com/sbuggay/comp5120/blob/master/relationalschema.txt)]
-- Description of how the ER model was translated ino the listed schemas
+- Description of how the ER model was translated ino the listed schemas [[link](https://github.com/sbuggay/comp5120/blob/master/schemadescription.txt)]
 - Text description of normalization
 - Text annotations of assumptions, constraints, etc
 
