@@ -34,8 +34,10 @@
     <form action="<?php echo $_SERVER['PHP_SELF']; ?>" class="well" method="post">
       <fieldset>
         <legend>Get Patient Report</legend>
-        <label>Patient ID:</label> <input type="number" name="croom"> 
-        <br>
+        <label>Patient ID:</label> <input type="number" name="cid"> 
+        <hr>
+        <label>Patient Name:</label> <input type="text" name="cname"> 
+        <hr>
         <input class="btn btn-primary" type="submit" name="submit">
       </fieldset>
     </form>
@@ -46,19 +48,49 @@
     if (!$dbh) {
       echo("Error in connection: " . pg_last_error());
     }
-
-    $sql = "SELECT * FROM Room WHERE roomid=" . $_POST['croom'];
-    $result = pg_query($dbh, $sql);
-    if (!$result) {
-      echo("Error in SQL query: " . pg_last_error());
+    if($_POST['cname'] == '')
+    {
+      $sql = "SELECT * FROM Patient WHERE patientid=" . $_POST['cid'];
+    }
+    else
+    {
+      $sql = "SELECT * FROM Patient WHERE name=" . "'" . $_POST['cname'] . "'";
     }
 
+    $result = pg_query($dbh, $sql);
+    // query error
+    if (!$result) {
+        echo "<div class='alert alert-error'>";
+        echo "<button type='button' class='close' data-dismiss='alert'>&times;</button>";
+        echo "Error in query";
+        echo "<br>";
+        echo (pg_last_error());
+        echo "</div>";
+    }
+    // no results
+    if (pg_num_rows ( $result ) == 0)
+    {
+        echo "<div class='alert alert-error'>";
+        echo "<button type='button' class='close' data-dismiss='alert'>&times;</button>";
+        echo "No results found";
+        echo "</div>";
+    }
+
+    // print results
     while ($row = pg_fetch_array($result)) {
       echo "<pre>";
       echo "ID: " . $row[0] . "<br />";
-      echo "Private: " . $row[1] . "<br />";
-      echo "Beds: " . $row[2] . "<br />";
-      echo "Cost: " . $row[3] . "<br />";
+      echo "Name: " . $row[1] . "<br />";
+      echo "Street: " . $row[2] . "<br />";
+      echo "City: " . $row[3] . "<br />";
+      echo "State: " . $row[4] . "<br />";
+      echo "ZIP: " . $row[5] . "<br />";
+      echo "Admitted Date: " . $row[6] . "<br />";
+      echo "Discharged Date: " . $row[7] . "<br />";
+      echo "Doctor ID: " . $row[8] . "<br />";
+      echo "Policy Number: " . $row[9] . "<br />";
+      echo "Room ID: " . $row[10] . "<br />";
+      echo "Bed Label: " . $row[11] . "<br />";
       echo "</pre>";
     }
 
@@ -66,6 +98,7 @@
     pg_close($dbh);
     }
     ?>
+
 
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
     <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>

@@ -30,7 +30,7 @@
   </div>
 
   <div class="container">
-
+    <h2>Database Tables</h2>
     <ul class="nav nav-tabs" id="tabs">
       <li class="active"><a href="#patients" data-toggle="tab">Patients</a></li>
       <li><a href="#insurances" data-toggle="tab">Insurances</a></li>
@@ -225,10 +225,6 @@
       </div>
     </div>
 
-    <script type="text/javascript">
-      jQuery(document).ready(function ($) {
-        $(".tabs").tabs();
-      });
     </script>    
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
     <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>

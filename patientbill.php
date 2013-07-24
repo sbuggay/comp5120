@@ -48,7 +48,7 @@
     if (!$dbh) {
       echo("Error in connection: " . pg_last_error());
     }
-    if($_POST['cid'] != '')
+    if($_POST['cname'] == '')
     {
       $sql = "SELECT * FROM Patient WHERE patientid=" . $_POST['cid'];
     }
@@ -58,7 +58,19 @@
     }
     $result = pg_query($dbh, $sql);
     if (!$result) {
-      echo("Error in SQL query: " . pg_last_error());
+        echo "<div class='alert alert-error'>";
+        echo "<button type='button' class='close' data-dismiss='alert'>&times;</button>";
+        echo "Error in query";
+        echo "<br>";
+        echo (pg_last_error());
+        echo "</div>";
+    }
+    if (pg_num_rows ( $result ) == 0)
+    {
+        echo "<div class='alert alert-error'>";
+        echo "<button type='button' class='close' data-dismiss='alert'>&times;</button>";
+        echo "No results found";
+        echo "</div>";
     }
 
     while ($row = pg_fetch_array($result)) {
