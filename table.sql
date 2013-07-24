@@ -146,7 +146,7 @@ INSERT INTO Bed VALUES
 
 INSERT INTO Insurance VALUES
 	('Medicare', '000 000 0000'),
-	('Medicare', '000 000 0000')
+	('Medicaid', '000 000 0000')
 ;
 
 INSERT INTO Doctor VALUES
