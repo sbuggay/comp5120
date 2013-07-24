@@ -3,7 +3,7 @@ comp5120 Deliverables
 
 Conceptual model specification
 --------
-- ER diagrams
+- ER diagram [[link](https://raw.github.com/sbuggay/comp5120/master/erdiagram.png)]
 - Text annotations of assumtions, constraints, etc
 
 
