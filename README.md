@@ -1,14 +1,5 @@
-Technologies Used
---------
-- PHP5
-- Apache2
-- PostgresQL 9.1
-- jQuery 1.7
-- Bootstrap 2
-
 comp5120 Roadmap
-========
-
+--------
 
 Conceptual model specification
 --------
@@ -30,3 +21,11 @@ Database implementation
 - Source Code
 - Generated Output
 - URL
+
+Technologies Used
+--------
+- PHP5
+- Apache2
+- PostgresQL 9.1
+- jQuery 1.7
+- Bootstrap 2
