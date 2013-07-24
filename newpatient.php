@@ -20,9 +20,9 @@
           <li><a href="index.php">Home</a></li>
           <li class="active"><a href="newpatient.php">New Patient</a></li>
           <li><a href="patientbill.php">Patient Bill</a></li>
-          <li><a href="#">Room Utilization Report</a></li>
-          <li><a href="#">Patient Report</a></li>
-          <li><a href="#">Physician Report</a></li>
+          <li><a href="roomutilizationreport.php">Room Utilization Report</a></li>
+          <li><a href="patientreport.php">Patient Report</a></li>
+          <li><a href="physicianreport.php">Physician Report</a></li>
           <li><a href="#">Info</a></li>
         </ul>
       </div>

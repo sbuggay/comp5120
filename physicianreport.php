@@ -19,10 +19,10 @@
       <ul class="nav">
         <li><a href="index.php">Home</a></li>
         <li><a href="newpatient.php">New Patient</a></li>
-        <li class="active"><a href="patientbill.php">Patient Bill</a></li>
+        <li><a href="patientbill.php">Patient Bill</a></li>
         <li><a href="roomutilizationreport.php">Room Utilization Report</a></li>
         <li><a href="patientreport.php">Patient Report</a></li>
-        <li><a href="physicianreport.php">Physician Report</a></li>
+        <li class="active"><a href="physicianreport.php">Physician Report</a></li>
         <li><a href="#">Info</a></li>
       </ul>
       </div>
@@ -33,8 +33,8 @@
 
     <form action="<?php echo $_SERVER['PHP_SELF']; ?>" class="well" method="post">
       <fieldset>
-        <legend>Get Patient Bill</legend>
-        <label>Patient ID:</label> <input type="number" name="cid"> 
+        <legend>Get Physician Report</legend>
+        <label>Physician ID:</label> <input type="number" name="croom"> 
         <br>
         <input class="btn btn-primary" type="submit" name="submit">
       </fieldset>
@@ -47,7 +47,7 @@
       echo("Error in connection: " . pg_last_error());
     }
 
-    $sql = "SELECT * FROM Patient WHERE patientid=" . $_POST['cid'];
+    $sql = "SELECT * FROM Room WHERE roomid=" . $_POST['croom'];
     $result = pg_query($dbh, $sql);
     if (!$result) {
       echo("Error in SQL query: " . pg_last_error());
@@ -56,17 +56,9 @@
     while ($row = pg_fetch_array($result)) {
       echo "<pre>";
       echo "ID: " . $row[0] . "<br />";
-      echo "Name: " . $row[1] . "<br />";
-      echo "Street: " . $row[2] . "<br />";
-      echo "City: " . $row[3] . "<br />";
-      echo "State: " . $row[4] . "<br />";
-      echo "ZIP: " . $row[5] . "<br />";
-      echo "Admitted Date: " . $row[6] . "<br />";
-      echo "Discharged Date: " . $row[7] . "<br />";
-      echo "Doctor ID: " . $row[8] . "<br />";
-      echo "Policy Number: " . $row[9] . "<br />";
-      echo "Room ID: " . $row[10] . "<br />";
-      echo "Bed Label: " . $row[11] . "<br />";
+      echo "Private: " . $row[1] . "<br />";
+      echo "Beds: " . $row[2] . "<br />";
+      echo "Cost: " . $row[3] . "<br />";
       echo "</pre>";
     }
 
