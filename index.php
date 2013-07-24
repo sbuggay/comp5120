@@ -23,6 +23,7 @@
           <li><a href="#">Room Utilization Report</a></li>
           <li><a href="#">Patient Report</a></li>
           <li><a href="#">Physician Report</a></li>
+          <li><a href="#">Info</a></li>
         </ul>
       </div>
     </div>

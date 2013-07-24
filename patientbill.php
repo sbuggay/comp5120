@@ -23,6 +23,7 @@
         <li><a href="#">Room Utilization Report</a></li>
         <li><a href="#">Patient Report</a></li>
         <li><a href="#">Physician Report</a></li>
+        <li><a href="#">Info</a></li>
       </ul>
       </div>
     </div>
@@ -32,7 +33,7 @@
 
     <form action="<?php echo $_SERVER['PHP_SELF']; ?>" class="well" method="post">
       <fieldset>
-        <legend>Get Patient</legend>
+        <legend>Get Patient Bill</legend>
         <label>Patient ID:</label> <input type="number" name="cid"> 
         <br>
         <input class="btn btn-primary" type="submit" name="submit">
