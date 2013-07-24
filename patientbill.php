@@ -35,7 +35,9 @@
       <fieldset>
         <legend>Get Patient Bill</legend>
         <label>Patient ID:</label> <input type="number" name="cid"> 
-        <br>
+        <hr>
+        <label>Patient Name:</label> <input type="text" name="cname"> 
+        <hr>
         <input class="btn btn-primary" type="submit" name="submit">
       </fieldset>
     </form>
@@ -46,8 +48,14 @@
     if (!$dbh) {
       echo("Error in connection: " . pg_last_error());
     }
-
-    $sql = "SELECT * FROM Patient WHERE patientid=" . $_POST['cid'];
+    if($_POST['cid'] != '')
+    {
+      $sql = "SELECT * FROM Patient WHERE patientid=" . $_POST['cid'];
+    }
+    else
+    {
+      $sql = "SELECT * FROM Patient WHERE name=" . "'" . $_POST['cname'] . "'";
+    }
     $result = pg_query($dbh, $sql);
     if (!$result) {
       echo("Error in SQL query: " . pg_last_error());

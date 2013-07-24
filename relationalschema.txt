@@ -1,0 +1,29 @@
+Patient(patientID(pk),name,
+        addrStreet,addrCity,addrState,addrZIP,
+        admitted,discharged,
+        (roomID,bedLabel)(fk refs Bed)(unique),
+        doctorID(fk refs Doctor),
+        insurerID(fk refs Insurer),policyNum)
+
+Insurer(insurerID(pk),name)
+
+Bed(roomID(fk refs Room),bedLabel,(roomID,bedLabel)(pk))
+
+Room(roomID(pk),accomodation)
+
+Doctor(doctorID(pk),name,phone)
+
+TreatmentType(treatmentTypeID(pk),fee)
+
+EmployeeType(employeeTypeID(pk),name,fee)
+
+Treatment(treatmentID(pk),
+          doctorID(fk refs Doctor),
+          patientID(fk refs Patient),
+          treatmentTypeID(fk refs TreatmentType),
+          duration)
+
+TreatmentInvolvement(treatmentID(fk refs Treatment),
+                     employeeTypeID(fk refs EmployeeType),
+                     (treatmentID,employeeTypeID)(pk),
+                     num)
