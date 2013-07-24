@@ -18,7 +18,7 @@ Database implementation
 --------
 - Create table commands  [[link](https://github.com/sbuggay/comp5120/blob/master/table.sql)]
 - Insert commands [[link](https://github.com/sbuggay/comp5120/blob/master/table.sql)]
-- Source Code
+- Source Code [[link](https://github.com/sbuggay/comp5120)]
 - Generated Output
 - URL [[link](http://devel-base.net/comp5120/)]
 
