@@ -32,7 +32,8 @@
   <div class="container">
 
     <div>
-    <legend>Room Utilization Report</legend>
+
+    <legend>Room Utilization Report <?php echo(date('Y/m/d H:i:s'));?></legend>
       <?php
 
         $dbh = pg_connect("host=localhost dbname=group5db user=postgres password=hendrix");
@@ -40,63 +41,35 @@
           echo("Error in connection: " . pg_last_error());
         }
 
-        $sql = "SELECT * FROM Room";
+        $sql = "select roomid, patient.bedlabel, roomprivate, patientid, name, discharged from room left join bed using(roomid) left join patient using(roomid) order by roomid, patient.bedlabel;";
         $result = pg_query($dbh, $sql);
         if (!$result) {
           echo("Error in SQL query: " . pg_last_error());
         }
-
+        echo "<table class='table table-striped'>";
+        echo "<tr>";
+        echo "<th>Room #</th>";
+        echo "<th>Bed</th>";
+        echo "<th>Private</th>";
+        echo "<th>PatiendID</th>";
+        echo "<th>Name</th>";
+        echo "<th>Discharged</th>";
+        echo "</tr>";
         while ($row = pg_fetch_array($result)) {
-          echo "<pre>";
-          echo "ID: " . $row[0] . "<br />";
-          echo "Private: " . $row[1] . "<br />";
-          echo "Beds: " . $row[2] . "<br />";
-          echo "Cost: " . $row[3] . "<br />";
-          echo "</pre>";
+          echo "<tr>";
+          echo "<td>" . $row[0] . "</td>";
+          echo "<td>" . $row[1] . "</td>";
+          echo "<td>" . $row[2] . "</td>";
+          echo "<td>" . $row[3] . "</td>";
+          echo "<td>" . $row[4] . "</td>";
+          echo "<td>" . $row[5] . "</td>";
+          echo "</tr>";
         }
-
+        echo "</table>";
         pg_free_result($result);
         pg_close($dbh);
       ?>
     </div>
-
-    <hr>
-
-    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" class="well" method="post">
-      <fieldset>
-        <legend>Search room</legend>
-        <label>Room Number:</label> <input type="number" name="croom"> 
-        <br>
-        <input class="btn btn-primary" type="submit" name="submit">
-      </fieldset>
-    </form>
-
-    <?php
-    if ($_POST['submit']) {
-      $dbh = pg_connect("host=localhost dbname=group5db user=postgres password=hendrix");
-      if (!$dbh) {
-        echo("Error in connection: " . pg_last_error());
-      }
-
-      $sql = "SELECT * FROM Room WHERE roomid=" . $_POST['croom'];
-      $result = pg_query($dbh, $sql);
-      if (!$result) {
-        echo("Error in SQL query: " . pg_last_error());
-      }
-
-      while ($row = pg_fetch_array($result)) {
-        echo "<pre>";
-        echo "ID: " . $row[0] . "<br />";
-        echo "Private: " . $row[1] . "<br />";
-        echo "Beds: " . $row[2] . "<br />";
-        echo "Cost: " . $row[3] . "<br />";
-        echo "</pre>";
-      }
-
-      pg_free_result($result);
-      pg_close($dbh);
-    }
-    ?>
 
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
     <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>

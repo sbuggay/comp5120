@@ -20,6 +20,7 @@ CREATE TABLE Doctor(
 	DoctorID smallint NOT NULL,
 	name varchar(30),
 	phone varchar(15),
+	office int,
 	PRIMARY KEY (DoctorID)
 	);
 
@@ -114,9 +115,10 @@ INSERT INTO EmployeeCost VALUES
 ('Staff', 25)
 ;
 
+
 INSERT INTO Room VALUES
-(101, false, 2, 100),
-(102, false, 2, 100),
+(101, false, 2, 100)
+,(102, false, 2, 100),
 (103, false, 2, 100),
 (104, false, 2, 100),
 (201, false, 2, 100),
@@ -150,8 +152,13 @@ INSERT INTO Insurance VALUES
 ;
 
 INSERT INTO Doctor VALUES
-(1, 'Dr. Hendrix', '000 000 0000'),
-(2, 'Dr. Andrews', '000 000 0000'),
-(3, 'Dr. Owen', '000 000 0000'),
-(4, 'Dr. Fry', '000 000 0000')
+(1, 'Dr. Hendrix', '027-5874', 500),
+(2, 'Dr. Andrews', '171-9239', 501),
+(3, 'Dr. Owen', '201-1023', 502),
+(4, 'Dr. Fry', '922-1415', 503)
 ;
+
+INSERT INTO Patient VALUES
+(1, 'Devan Buggay', '5 Haley Ave', 'Auburn', 'Alabama', 35213, '12/19/1991', '12/20/1991', 1, 'Medicare', '3215', 101, 'A'),
+(2, 'Drew Buggay', '5 Haley Ave', 'Auburn', 'Alabama', 35213, '12/19/1991', '12/20/1991', 1, 'Medicare', '3215', 101, 'B'),
+(3, 'Dara Buggay', '5 Haley Ave', 'Auburn', 'Alabama', 35213, '12/19/1991', '12/20/1991', 1, 'Medicare', '3215', 103, 'A');

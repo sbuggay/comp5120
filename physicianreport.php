@@ -34,7 +34,7 @@
     <form action="<?php echo $_SERVER['PHP_SELF']; ?>" class="well" method="post">
       <fieldset>
         <legend>Get Physician Report</legend>
-        <label>Physician ID:</label> <input type="number" name="croom"> 
+        <label>Physician ID:</label> <input type="number" name="cdoctorid"> 
         <br>
         <input class="btn btn-primary" type="submit" name="submit">
       </fieldset>
@@ -47,7 +47,7 @@
       echo("Error in connection: " . pg_last_error());
     }
 
-    $sql = "SELECT * FROM Room WHERE roomid=" . $_POST['croom'];
+    $sql = "SELECT * FROM Doctor WHERE doctorid=" . $_POST['cdoctorid'];
     $result = pg_query($dbh, $sql);
     if (!$result) {
       echo("Error in SQL query: " . pg_last_error());

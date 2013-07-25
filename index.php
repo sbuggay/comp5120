@@ -31,6 +31,8 @@
 
   <div class="container">
     <h2>Database Tables</h2>
+    Welcome to the Bay View Community Hospital record system. Below you will find a full list of each unaltered table in the database. If you wish to add a new patient or treatment, navigate to the 'New' tab. If you would like a form generated for you, head to the respective form tab.
+    <hr>
     <ul class="nav nav-tabs" id="tabs">
       <li class="active"><a href="#patients" data-toggle="tab">Patients</a></li>
       <li><a href="#insurances" data-toggle="tab">Insurances</a></li>
@@ -38,6 +40,7 @@
       <li><a href="#rooms" data-toggle="tab">Rooms</a></li>
       <li><a href="#beds" data-toggle="tab">Beds</a></li>
       <li><a href="#treatments" data-toggle="tab">Treatments</a></li>
+      <li><a href="#treatmenttypes" data-toggle="tab">Treatment Types</a></li>
       <li><a href="#employees" data-toggle="tab">Employees</a></li>
     </ul>
 
@@ -118,6 +121,7 @@
           echo "ID: " . $row[0] . "<br />";
           echo "Name: " . $row[1] . "<br />";
           echo "Phone: " . $row[2] . "<br />";
+          echo "Office: " . $row[3] . "<br />";
           echo "</pre>";
         }
 
@@ -176,6 +180,31 @@
         ?>
       </div>
       <div class="tab-pane" id="treatments">
+        <?php
+        $dbh = pg_connect("host=localhost dbname=group5db user=postgres password=hendrix");
+        if (!$dbh) {
+          echo("Error in connection: " . pg_last_error());
+        }
+
+        $sql = "SELECT * FROM treatment";
+        $result = pg_query($dbh, $sql);
+        if (!$result) {
+          echo("Error in SQL query: " . pg_last_error());
+        }
+
+        while ($row = pg_fetch_array($result)) {
+          echo "<pre>";
+          echo "Treatment: " . $row[0] . "<br />";
+          echo "Cost: " . $row[1] . "<br />";
+          echo "Ordered: " . $row[1] . "<br />";
+          echo "</pre>";
+        }
+
+        pg_free_result($result);
+        pg_close($dbh);
+        ?>
+      </div>
+      <div class="tab-pane" id="treatmenttypes">
         <?php
         $dbh = pg_connect("host=localhost dbname=group5db user=postgres password=hendrix");
         if (!$dbh) {

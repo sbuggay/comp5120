@@ -87,10 +87,9 @@
       echo "ZIP: " . $row[5] . "<br />";
       echo "Admitted Date: " . $row[6] . "<br />";
       echo "Discharged Date: " . $row[7] . "<br />";
-      echo "Doctor ID: " . $row[8] . "<br />";
-      echo "Policy Number: " . $row[9] . "<br />";
-      echo "Room ID: " . $row[10] . "<br />";
-      echo "Bed Label: " . $row[11] . "<br />";
+      echo "Room ID: " . $row[11] . "<br />";
+      echo "Bed Label: " . $row[12] . "<br />";
+      echo "Insurance: " . $row[9] . ", " . $row[10] . "<br />";
       echo "</pre>";
     }
 
