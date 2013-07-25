@@ -16,24 +16,55 @@
       </a>
       <a class="brand" href="index.php">Bay View Community Hospital</a>
       <div class="nav-collapse collapse">
-      <ul class="nav">
-        <li><a href="index.php">Home</a></li>
-        <li><a href="newpatient.php">New Patient</a></li>
-        <li><a href="patientbill.php">Patient Bill</a></li>
-        <li class="active"><a href="roomutilizationreport.php">Room Utilization Report</a></li>
-        <li><a href="patientreport.php">Patient Report</a></li>
-        <li><a href="physicianreport.php">Physician Report</a></li>
-        <li><a href="#">Info</a></li>
-      </ul>
+        <ul class="nav">
+          <li><a href="index.php">Home</a></li>
+          <li><a href="newpatient.php">New Patient</a></li>
+          <li><a href="patientbill.php">Patient Bill</a></li>
+          <li class="active"><a href="roomutilizationreport.php">Room Utilization Report</a></li>
+          <li><a href="patientreport.php">Patient Report</a></li>
+          <li><a href="physicianreport.php">Physician Report</a></li>
+          <li><a href="admin.php">Admin</a></li>
+        </ul>
       </div>
     </div>
   </div>
 
   <div class="container">
 
+    <div>
+    <legend>Room Utilization Report</legend>
+      <?php
+
+        $dbh = pg_connect("host=localhost dbname=group5db user=postgres password=hendrix");
+        if (!$dbh) {
+          echo("Error in connection: " . pg_last_error());
+        }
+
+        $sql = "SELECT * FROM Room";
+        $result = pg_query($dbh, $sql);
+        if (!$result) {
+          echo("Error in SQL query: " . pg_last_error());
+        }
+
+        while ($row = pg_fetch_array($result)) {
+          echo "<pre>";
+          echo "ID: " . $row[0] . "<br />";
+          echo "Private: " . $row[1] . "<br />";
+          echo "Beds: " . $row[2] . "<br />";
+          echo "Cost: " . $row[3] . "<br />";
+          echo "</pre>";
+        }
+
+        pg_free_result($result);
+        pg_close($dbh);
+      ?>
+    </div>
+
+    <hr>
+
     <form action="<?php echo $_SERVER['PHP_SELF']; ?>" class="well" method="post">
       <fieldset>
-        <legend>Get Room Utilization Report</legend>
+        <legend>Search room</legend>
         <label>Room Number:</label> <input type="number" name="croom"> 
         <br>
         <input class="btn btn-primary" type="submit" name="submit">
@@ -42,28 +73,28 @@
 
     <?php
     if ($_POST['submit']) {
-    $dbh = pg_connect("host=localhost dbname=group5db user=postgres password=hendrix");
-    if (!$dbh) {
-      echo("Error in connection: " . pg_last_error());
-    }
+      $dbh = pg_connect("host=localhost dbname=group5db user=postgres password=hendrix");
+      if (!$dbh) {
+        echo("Error in connection: " . pg_last_error());
+      }
 
-    $sql = "SELECT * FROM Room WHERE roomid=" . $_POST['croom'];
-    $result = pg_query($dbh, $sql);
-    if (!$result) {
-      echo("Error in SQL query: " . pg_last_error());
-    }
+      $sql = "SELECT * FROM Room WHERE roomid=" . $_POST['croom'];
+      $result = pg_query($dbh, $sql);
+      if (!$result) {
+        echo("Error in SQL query: " . pg_last_error());
+      }
 
-    while ($row = pg_fetch_array($result)) {
-      echo "<pre>";
-      echo "ID: " . $row[0] . "<br />";
-      echo "Private: " . $row[1] . "<br />";
-      echo "Beds: " . $row[2] . "<br />";
-      echo "Cost: " . $row[3] . "<br />";
-      echo "</pre>";
-    }
+      while ($row = pg_fetch_array($result)) {
+        echo "<pre>";
+        echo "ID: " . $row[0] . "<br />";
+        echo "Private: " . $row[1] . "<br />";
+        echo "Beds: " . $row[2] . "<br />";
+        echo "Cost: " . $row[3] . "<br />";
+        echo "</pre>";
+      }
 
-    pg_free_result($result);
-    pg_close($dbh);
+      pg_free_result($result);
+      pg_close($dbh);
     }
     ?>
 

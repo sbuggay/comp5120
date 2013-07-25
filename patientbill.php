@@ -23,7 +23,7 @@
         <li><a href="roomutilizationreport.php">Room Utilization Report</a></li>
         <li><a href="patientreport.php">Patient Report</a></li>
         <li><a href="physicianreport.php">Physician Report</a></li>
-        <li><a href="#">Info</a></li>
+        <li><a href="admin.php">Admin</a></li>
       </ul>
       </div>
     </div>
