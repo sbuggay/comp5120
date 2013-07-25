@@ -150,6 +150,8 @@ INSERT INTO Insurance VALUES
 ;
 
 INSERT INTO Doctor VALUES
-(1, 'Doctor 1', '000 000 0000'),
-(2, 'Doctor 2', '000 000 0000')
+(1, 'Dr. Hendrix', '000 000 0000'),
+(2, 'Dr. Andrews', '000 000 0000'),
+(3, 'Dr. Owen', '000 000 0000'),
+(4, 'Dr. Fry', '000 000 0000')
 ;

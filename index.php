@@ -117,7 +117,7 @@
           echo "<pre>";
           echo "ID: " . $row[0] . "<br />";
           echo "Name: " . $row[1] . "<br />";
-          echo "Phone: " . $row[1] . "<br />";
+          echo "Phone: " . $row[2] . "<br />";
           echo "</pre>";
         }
 

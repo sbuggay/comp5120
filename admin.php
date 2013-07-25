@@ -30,16 +30,13 @@
   </div>
 
   <div class="container">
+    
 
-    <div class="hero-unit">
-      <h1>Reset database</h1>
-      <p>Reset database to all default hospital values</p>
-      <p>
-        <a class="btn btn-primary btn-large">
-          Reset
-        </a>
-      </p>
-    </div>
+         <form action="resetdb.php" method="post">
+        <button class="btn btn-large btn-block btn-danger" type="submit">Reset database to default values</button>
+        </form>
+
+
 
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
     <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
