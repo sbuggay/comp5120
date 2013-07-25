@@ -16,8 +16,8 @@ Implementation model specification
 
 Database implementation
 --------
-- Create table commands  [[link](https://github.com/sbuggay/comp5120/blob/master/table.sql)]
-- Insert commands [[link](https://github.com/sbuggay/comp5120/blob/master/table.sql)]
+- Create table commands  [[link](https://raw.github.com/sbuggay/comp5120/master/database.sql)]
+- Insert commands [[link](https://raw.github.com/sbuggay/comp5120/master/database.sql)]
 - Source Code [[link](https://github.com/sbuggay/comp5120)]
 - Generated Output
 - URL [[link](http://devel-base.net/comp5120/)]
