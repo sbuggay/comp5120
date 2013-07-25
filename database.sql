@@ -117,10 +117,12 @@ INSERT INTO EmployeeCost VALUES
 
 
 INSERT INTO Room VALUES
-(101, false, 2, 100)
-,(102, false, 2, 100),
+(100, true, 1, 100),
+(101, true, 1, 100),
+(102, false, 2, 100),
 (103, false, 2, 100),
 (104, false, 2, 100),
+(200, true, 1, 100),
 (201, false, 2, 100),
 (202, false, 2, 100),
 (203, false, 2, 100),
@@ -128,14 +130,15 @@ INSERT INTO Room VALUES
 ;
 
 INSERT INTO Bed VALUES
+(100, 'A'),
 (101, 'A'),
-(101, 'B'),
 (102, 'A'),
 (102, 'B'),
 (103, 'A'),
 (103, 'B'),
 (104, 'A'),
 (104, 'B'),
+(200, 'A'),
 (201, 'A'),
 (201, 'B'),
 (202, 'A'),
@@ -148,7 +151,9 @@ INSERT INTO Bed VALUES
 
 INSERT INTO Insurance VALUES
 ('Medicare', '000 000 0000'),
-('Medicaid', '000 000 0000')
+('Medicaid', '000 000 0000'),
+('Unitedhealth Group', '000 000 0000'),
+('Wellpoint Inc. Group', '000 000 0000')
 ;
 
 INSERT INTO Doctor VALUES
