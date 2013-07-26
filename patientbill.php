@@ -99,12 +99,18 @@
           echo "<th>Description</th>";
           echo "<th>Charge</th>";
           echo "</tr>";
+          
+          $total = 0;
           while ($row = pg_fetch_array($result)) {
-          echo "<tr>";
-          echo "<td>" . $row[0] . "</td>";
-          echo "<td>" . $row[1] . "</td>";
-          echo "</tr>";
+            $total += intval($row[1]);
+            
+            echo "<tr>";
+            echo "<td>" . $row[0] . "</td>";
+            echo "<td>" . $row[1] . "</td>";
+            echo "</tr>";
           }
+          
+          echo "<tr><td>Total</td><td>" . $total . "</td></tr>";
           echo "</table>";
 
           pg_free_result($result);
