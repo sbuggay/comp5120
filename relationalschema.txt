@@ -1,3 +1,7 @@
+~~Relational Schema~~
+
+
+
 Patient(patientID(pk),name,
         addrStreet,addrCity,addrState,addrZIP,
         admitted,discharged,

@@ -1,3 +1,6 @@
+~~ER Diagram to Schema Description~~
+
+
 Each patient has a unique ID so they can be identified individually in the database. The room number and bed label for the patient is stored as well. The ID of the doctor who admits the patient is included with the patient's information. If the patient has insurance then the patient's database also contains the insurer's name and policy number. The patient's address is created using sub-attributes to make it easier to print out the patient's information when needed. The patient's admit date is stored and the date he/she is discharged it also stored.
 
 The Insurance Company is created as a table to keep track of the Insurance Company's information which does not change patient to patient. This makes it so that we don't have to store all the insurance company's information for each patient, but only one time per company. 

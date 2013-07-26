@@ -1,3 +1,5 @@
+~~Normalizations~~
+
 A lot of the designs were done in such a way that it would already be BCNF.  Though we did have to brake apart room in the normalization process when we realized it wasn't working initially
 
 Room
