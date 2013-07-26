@@ -69,7 +69,7 @@
             echo "Date admitted: " . $row[5] . "<br>";
             echo "Date discharged: " . $row[6] . "<br>";
 
-            $sql = "select treatmentid, treatment.treatmenttype, treatmenttype.cost from treatment join treatmenttype using (treatmenttype) where patientid=" . $_POST['cid'];
+            $sql = "select treatmenttype as type, cost from treatment join treatmenttype using(treatmenttype) where patientid = " . $_POST['cid'] . " union select employeetype as type, cost*sum(duration) as cost from treatment join treatmentinvolvement using(treatmentid) join employeecost using(employeetype) where patientid = " . $_POST['cid'] . " group by employeetype,cost union select roomname as type, (discharged-admitted)*roomcost as cost from patient join room using(roomid) join roomcost using (roomname) where patientid = " . $_POST['cid'] . " and discharged is not null;";
           }
           else
           {
@@ -96,7 +96,6 @@
           }
           echo "<table class='table table-striped'>";
           echo "<tr>";
-          echo "<th>Item code</th>";
           echo "<th>Description</th>";
           echo "<th>Charge</th>";
           echo "</tr>";
@@ -104,7 +103,6 @@
           echo "<tr>";
           echo "<td>" . $row[0] . "</td>";
           echo "<td>" . $row[1] . "</td>";
-          echo "<td>" . $row[2] . "</td>";
           echo "</tr>";
           }
           echo "</table>";
