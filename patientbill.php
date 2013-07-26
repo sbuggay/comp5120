@@ -37,7 +37,9 @@
       <fieldset>
         
         <label>Patient ID:</label> <input type="number" name="cid"> 
-        <hr>
+            <br>
+            <strong>OR</strong>
+            <br><br>
         <label>Patient Name:</label> <input type="text" name="cname"> 
         <hr>
         <input class="btn btn-primary" type="submit" name="submit">

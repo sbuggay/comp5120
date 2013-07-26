@@ -34,6 +34,15 @@
     <h1>Bay View Community Hospital</h1>
     Welcome to the Bay View Community Hospital record system. Below you will find a full list of each unaltered table in the database. If you wish to add a new patient or treatment, navigate to the 'New' tab. If you would like a form generated for you, head to the respective form tab.
     <hr>
+    <ul class="unstyled">
+    <li>
+    <a href="https://github.com/sbuggay/comp5120">Github Page</a>
+    </li>
+    <li>
+    <a href="https://github.com/sbuggay/comp5120/blob/master/README.md">Readme</a>
+    </li>
+    </ul>
+    <hr>
     <h2>Database Tables</h2>
     <ul class="nav nav-tabs" id="tabs">
       <li class="active"><a href="#patients" data-toggle="tab">Patients</a></li>
@@ -148,8 +157,6 @@
           echo "<pre>";
           echo "ID: " . $row[0] . "<br />";
           echo "Private: " . $row[1] . "<br />";
-          echo "Number of Beds: " . $row[2] . "<br />";
-          echo "Cost: " . $row[3] . "<br />";
           echo "</pre>";
         }
 
