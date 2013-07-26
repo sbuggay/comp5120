@@ -59,7 +59,7 @@
           echo "<br>";
           echo "Statement account for:<br><br>";
 
-          $sql = "SELECT name, patientid, addrStreet, addrState, addrZIP, admitted, discharged FROM Patient WHERE patientid=" . ($_POST['cname'] == '' ? $_POST['cid'] : $_POST['cname']);
+          $sql = "SELECT name, patientid, addrStreet, addrState, addrZIP, admitted, discharged FROM Patient WHERE " . ($_POST['cname'] == '' ? "patientid=".$_POST['cid'] : "name='".$_POST['cname']."'");
           $result = pg_query($dbh, $sql);
           $row = pg_fetch_array($result);
           
