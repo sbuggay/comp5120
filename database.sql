@@ -180,19 +180,28 @@ INSERT INTO Patient VALUES
 (4, 'Zach White', '34 Parker Ave', 'Auburn', 'Alabama', 35213, '7/21/2013', '7/22/2013', 1, 'Wellpoint Inc. Group', '3235', 204, 'A'),
 (5, 'Pam Zirkle', '3 Parker Ave', 'Auburn', 'Alabama', 35213, '7/21/2013', '7/22/2013', 1, 'Medicare', '3235', 204, 'B'),
 (6, 'Mina Edgar', '5 College Ave', 'Auburn', 'Alabama', 35213, '7/22/2013', '7/24/2013', 1, 'Wellpoint Inc. Group', '3235', 202, 'A')
-
 ;
 
-INSERT INTO Treatment VALUES
+
+INSERT INTO treatment VALUES 
 (1, 'Surgery1', 1, 1, 4),
-(2, 'XRay', 1, 1, 4),
+(2, 'Surgery2', 2, 2, 4),
+(3, 'XRay', 3, 3, 4),
+(4, 'Surgery1', 3, 4, 4),
+(5, 'XRay', 1, 1, 1)
+;
 
 
-(3, 'Surgery2', 2, 2, 4),
-(4, 'XRay', 3, 3, 4),
-(5, 'Surgery1', 3, 4, 4),
-
-(6, 'XRay', 2, 3, 4),
-
-(7, 'XRay', 6, 3, 4)
+INSERT INTO treatmentinvolvement VALUES 
+(1, 'Doctor', 2),
+(1, 'Nurse', 4),
+(2, 'Doctor', 1),
+(2, 'Nurse', 2),
+(3, 'Technician', 1),
+(3, 'Staff', 2),
+(4, 'Doctor', 1),
+(4, 'Nurse', 3),
+(5, 'Technician', 2),
+(5, 'Staff', 3),
+(5, 'Nurse', 1)
 ;
