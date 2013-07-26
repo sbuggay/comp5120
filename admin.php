@@ -30,18 +30,22 @@
   </div>
 
   <div class="container">
-    
 
-         <form action="resetdb.php" method="post">
-        <button class="btn btn-large btn-block btn-danger" type="submit">Reset database to default values</button>
-        <hr>
-        <h2>Default values</h2>
-        <hr>
-        <pre>
-        <br>
-        <?php include('database.sql'); ?>
-        </pre>
-        </form>
+
+   <form action="resetdb.php" method="post">
+    <button class="btn btn-large btn-block btn-danger" type="submit">Reset database to default values</button>
+    <hr>
+    <h2>Default values</h2>
+    <pre>
+      <br>
+        <?php
+        $file = $_SERVER['DOCUMENT_ROOT'] . "/comp5120/database.sql"; //Path to your *.txt file 
+        $contents = file($file); 
+        $string = implode($contents); 
+        $string = trim($string);
+        echo $string; ?>
+      </pre>
+    </form>
 
 
 
