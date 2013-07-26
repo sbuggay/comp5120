@@ -30,14 +30,21 @@
   </div>
 
   <div class="container">
+    <div class="row">
+    <div class="span6">
     <legend>Get Physician Report</legend>
     <form action="<?php echo $_SERVER['PHP_SELF']; ?>" class="well" method="post">
       <fieldset>
         
-        <label>Physician ID:</label> <input type="number" name="cdoctorid"> 
-        <br>
-        <input class="btn btn-primary" type="submit" name="submit">
-      </fieldset>
+            
+            <label>Physician ID:</label> <input type="number" name="cid"> 
+            <br>
+            <strong>OR</strong>
+            <br><br>
+            <label>Physician Name:</label> <input type="text" name="cname"> 
+            <hr>
+            <input class="btn btn-primary" type="submit" name="submit">
+          </fieldset>
     </form>
 
     <?php
@@ -46,26 +53,75 @@
     if (!$dbh) {
       echo("Error in connection: " . pg_last_error());
     }
+    echo "<legend>Physician Report " . date('Y/m/d') . "</legend>";
+          if($_POST['cname'] == '')
+          {
+            $sql = "select patientid, patient.name, roomid, treatmenttype from doctor join patient using (doctorid) join treatment using (patientid) where treatment.doctorid=" . $_POST['cid'];
 
-    $sql = "SELECT * FROM Doctor WHERE doctorid=" . $_POST['cdoctorid'];
+          }
+          else
+          {
+            $sql = "select doctor.doctorid from doctor where name=" . "'" . $_POST['cname'] . "'";
+
+            $result = pg_query($dbh, $sql);
+            $row = pg_fetch_array($result);
+
+            $sql = "select patientid, patient.name, roomid, treatmenttype from doctor join patient using (doctorid) join treatment using (patientid) where treatment.doctorid=" . intval($row[0]);
+          }
     $result = pg_query($dbh, $sql);
     if (!$result) {
       echo("Error in SQL query: " . pg_last_error());
     }
-
+        echo "<table class='table table-striped'>";
+        echo "<tr>";
+        echo "<th>Patient #</th>";
+        echo "<th>Patient name</th>";
+        echo "<th>Location</th>";
+        echo "<th>Treatment #</th>";
+        echo "</tr>";
     while ($row = pg_fetch_array($result)) {
-      echo "<pre>";
-      echo "ID: " . $row[0] . "<br />";
-      echo "Private: " . $row[1] . "<br />";
-      echo "Beds: " . $row[2] . "<br />";
-      echo "Cost: " . $row[3] . "<br />";
-      echo "</pre>";
+          echo "<tr>";
+          echo "<td>" . $row[0] . "</td>";
+          echo "<td>" . $row[1] . "</td>";
+          echo "<td>" . $row[2] . "</td>";
+          echo "<td>" . $row[3] . "</td>";
+      echo "</tr>";
     }
+    echo "</table>";
 
     pg_free_result($result);
     pg_close($dbh);
     }
     ?>
+    </div>
+    <div class="span6">
+    <legend>All physicians</legend>
+        <?php
+        $dbh = pg_connect("host=localhost dbname=group5db user=postgres password=hendrix");
+        if (!$dbh) {
+          echo("Error in connection: " . pg_last_error());
+        }
+
+        $sql = "SELECT * FROM Doctor";
+        $result = pg_query($dbh, $sql);
+        if (!$result) {
+          echo("Error in SQL query: " . pg_last_error());
+        }
+
+        while ($row = pg_fetch_array($result)) {
+          echo "<pre>";
+          echo "ID: " . $row[0] . "<br />";
+          echo "Name: " . $row[1] . "<br />";
+          echo "</pre>";
+        }
+
+        pg_free_result($result);
+        pg_close($dbh);
+        ?> 
+
+
+    </div>
+    </div>
 
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
     <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>

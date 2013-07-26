@@ -33,7 +33,7 @@
 
     <div>
 
-    <legend>Room Utilization Report <?php echo(date('Y/m/d H:i:s'));?></legend>
+    <legend>Room Utilization Report <?php echo(date('Y/m/d'));?></legend>
       <?php
 
         $dbh = pg_connect("host=localhost dbname=group5db user=postgres password=hendrix");

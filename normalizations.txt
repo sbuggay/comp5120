@@ -1,0 +1,41 @@
+A lot of the designs were done in such a way that it would already be BCNF.  Though we did have to brake apart room in the normalization process when we realized it wasn't working initially
+
+Room
+RoomID->roomName,roomCost,numBeds
+roomName->roomCost,numBeds
+
+Broke apart to be:
+
+RoomCost
+roomName->roomCost,numBeds
+BCNF
+
+Room
+RoomID->roomName
+BCNF
+
+------------------------
+
+Doctor
+DoctorID->Name,Phone,Office
+
+Bed
+roomID,bedLabel -> roomID,bedLabel (Trivial)
+
+Insurance
+InsuranceName->Phone
+
+Patient
+PatientID->name,addrStreet,addrCity,addrState,addrZIP,admitted,discharged,doctorID,insuranceName,policyNum,roomID,bedLabel
+addrZip->addrCity
+
+Decided not to brake this apart because we will not use zip to determine city.  If we were going to then we wouldn't store city
+
+TreatmentType
+TreatmentType->Cost,Ordered
+
+Treatment
+TreatmentID->TreatmentType,doctorID,patientID,duration
+
+TreatmentInvolvement
+TreatmentID,EmployeeType->Count

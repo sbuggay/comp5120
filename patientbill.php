@@ -30,6 +30,8 @@
   </div>
 
   <div class="container">
+    <div class="row">
+    <div class="span6">
     <legend>Get Patient Bill</legend>
     <form action="<?php echo $_SERVER['PHP_SELF']; ?>" class="well" method="post">
       <fieldset>
@@ -94,6 +96,35 @@
     pg_close($dbh);
     }
     ?>
+    </div>
+    <div class="span6">
+        <legend>All patients</legend>
+        <?php
+        $dbh = pg_connect("host=localhost dbname=group5db user=postgres password=hendrix");
+        if (!$dbh) {
+          echo("Error in connection: " . pg_last_error());
+        }
+
+        $sql = "SELECT * FROM Patient";
+        $result = pg_query($dbh, $sql);
+        if (!$result) {
+          echo("Error in SQL query: " . pg_last_error());
+        }
+
+        while ($row = pg_fetch_array($result)) {
+          echo "<pre>";
+          echo "ID: " . $row[0] . "<br />";
+          echo "Name: " . $row[1] . "<br />";
+          echo "</pre>";
+        }
+
+        pg_free_result($result);
+        pg_close($dbh);
+        ?> 
+
+
+    </div>
+    </div>
 
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
     <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>

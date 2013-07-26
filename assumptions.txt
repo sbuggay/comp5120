@@ -1,0 +1,8 @@
+There may be multiple types of rooms in the future - This is why we made a RoomCost table
+All rooms of the same type will cost the same amount
+Some room types in the future may be able to support more than 2 beds. Because of this there is a variable num beds in the RoomCost table.
+Insurance companies have a lot of information to store.  We are only storing name and phone number, but the reason it has its own table is because realistically there would be lots of information and many patients would share a company
+Every employee type of the same name has the same cost.  If you wanted to make certain employees charge more they must have a different name.  For example create a new type called "seniorNurse"
+Only one patient can be assigned to a bed and this is enforced with Unique.  If a patient leaves they must be deleted or have their bed changed to put a new patient in.
+Treatments can have different times for the same treatment type. One treatment may take 1 hour while another of the same type may take 2.
+Treatments can require different numbers of employees for the same treatment type.  For example an x-ray may need 1 nurse for one and two nurses for another.

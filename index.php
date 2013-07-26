@@ -33,8 +33,8 @@
   <div class="container">
     <h1>Bay View Community Hospital</h1>
     Welcome to the Bay View Community Hospital record system. Below you will find a full list of each unaltered table in the database. If you wish to add a new patient or treatment, navigate to the 'New' tab. If you would like a form generated for you, head to the respective form tab.
-    <h2>Database Tables</h2>
     <hr>
+    <h2>Database Tables</h2>
     <ul class="nav nav-tabs" id="tabs">
       <li class="active"><a href="#patients" data-toggle="tab">Patients</a></li>
       <li><a href="#insurances" data-toggle="tab">Insurances</a></li>
