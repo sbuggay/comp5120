@@ -1,17 +1,17 @@
-Each patient has a unique ID so they can be identified individually in the database. The room number and bed label for the patient is needed to enter the patient into the database so the doctors will know where the patient is and so another patient won't be given the same room (if it's private) or bed label. The ID of the doctor who admits the patient is included with the patient's information. If the patient has insurance then the patient's database also contains the insurer's name. The patient's address is created using sub-attributes to make it easier to print out the patient's information when needed. The patient's admit date is stored and the date he/she is discharged it also stored.
+Each patient has a unique ID so they can be identified individually in the database. The room number and bed label for the patient is needed to enter the patient into the database so the doctors will know where the patient is and so another patient won't be given the same room (if it's private) or bed label. The ID of the doctor who admits the patient is included with the patient's information. If the patient has insurance then the patient's database also contains the insurer's name. The patient's address is created using sub-attributes to make it easier to print out the patient's information when needed. When the patient is admitted, his/her information is entered into the database and the admit date is stored.
 
 The Insurer is created as a table to keep the data size smaller. Listing it as a table will only require each insurance company to be stored only once, instead of being stored for each patient.
 
- The Bed refers to the room number from Room. Each bed is determined uniquely by both it's ruoom number and the bed label.
+The Bed refers to the room number from Room. Each bed is determined uniquely by both it's ruoom number and the bed label. Each bed is assigned to a patient and no more than 1 patient can oocupy a bed. When a patient is discharged, the bed will be freed and a new patient can be assigned to the bed.
 
 The Room is uniquely identified by it's number. It also contains a boolean determining if the room is semi private or private, and it uses the integer to determine the number of beds. If the number of beds is greater than 1, the room is semi private and costs less.
 
-Doctor stores the doctor's information including ID, name, and phone number.
+Doctor stores the doctor's information including ID, name, and phone number. Many doctors can perform treatments on a single patient, but each patient only has one primary doctor who admitted him/her.
 
 TreatmentType stores IDs to determine the price of each treatment and whether or not the treament must be ordered by a doctor.
 
 The EmployeeCost determines the cost of each type of employee per hour. Each type of employee will always get the same payment. Nurses cannot make more than other nurses, and doctors cannot make more than other doctors.
 
-TreatmentInvolvement uses the EmployeeType ID and an integer to store what employees and how many of each were invlovled in the treatment.
+TreatmentInvolvement uses the EmployeeType ID and an integer to store what employees and how many of each were invlovled in the treatment. This shows how many employees and their type worked on the patients treatment. It will be used to calculate the patient's bill.
 
-Treatment stores the doctor's ID who ordered the treatment along with the patient undergoing the treatment, how long it lastes (to calculate the correct payment for each of the employees), and what the treatment was. Since patients can have multiple treatments of the same and different varaities, the treatment is stored in it's own table to allow flexibility. The amount of time a procedure lasts could change from patient to patient or doctor to doctor due to complications in the treatment room.
+Treatment stores the doctor's ID who ordered the treatment along with the patient undergoing the treatment, how long it lastes (to calculate the correct payment for each of the employees), and what the treatment was. Since patients can have multiple treatments of the same and different varaities, the treatment is stored in it's own table to allow flexibility. The amount of time a procedure lasts could change from patient to patient or doctor to doctor due to complications in the treatment room. Different types of treatments can be added as science improves.
