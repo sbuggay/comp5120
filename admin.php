@@ -18,7 +18,7 @@
       <div class="nav-collapse collapse">
         <ul class="nav">
           <li><a href="index.php">Home</a></li>
-          <li><a href="newpatient.php">New Patient</a></li>
+          <li><a href="modify.php">Modify</a></li>
           <li><a href="patientbill.php">Patient Bill</a></li>
           <li><a href="roomutilizationreport.php">Room Utilization Report</a></li>
           <li><a href="patientreport.php">Patient Report</a></li>
@@ -34,6 +34,13 @@
 
          <form action="resetdb.php" method="post">
         <button class="btn btn-large btn-block btn-danger" type="submit">Reset database to default values</button>
+        <hr>
+        <h2>Default values</h2>
+        <hr>
+        <pre>
+        <br>
+        <?php include('database.sql'); ?>
+        </pre>
         </form>
 
 

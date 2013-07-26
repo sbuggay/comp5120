@@ -18,7 +18,7 @@
       <div class="nav-collapse collapse">
       <ul class="nav">
         <li><a href="index.php">Home</a></li>
-        <li><a href="newpatient.php">New Patient</a></li>
+        <li><a href="modify.php">Modify</a></li>
         <li class="active"><a href="patientbill.php">Patient Bill</a></li>
         <li><a href="roomutilizationreport.php">Room Utilization Report</a></li>
         <li><a href="patientreport.php">Patient Report</a></li>

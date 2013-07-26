@@ -2,6 +2,7 @@
 <html lang="en">   
 
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
 </head>
 
@@ -18,7 +19,7 @@
       <div class="nav-collapse collapse">
         <ul class="nav">
           <li class="active"><a href="index.php">Home</a></li>
-          <li><a href="newpatient.php">New Patient</a></li>
+          <li><a href="modify.php">Modify</a></li>
           <li><a href="patientbill.php">Patient Bill</a></li>
           <li><a href="roomutilizationreport.php">Room Utilization Report</a></li>
           <li><a href="patientreport.php">Patient Report</a></li>
@@ -30,8 +31,9 @@
   </div>
 
   <div class="container">
-    <h2>Database Tables</h2>
+    <h1>Bay View Community Hospital</h1>
     Welcome to the Bay View Community Hospital record system. Below you will find a full list of each unaltered table in the database. If you wish to add a new patient or treatment, navigate to the 'New' tab. If you would like a form generated for you, head to the respective form tab.
+    <h2>Database Tables</h2>
     <hr>
     <ul class="nav nav-tabs" id="tabs">
       <li class="active"><a href="#patients" data-toggle="tab">Patients</a></li>
@@ -194,9 +196,11 @@
 
         while ($row = pg_fetch_array($result)) {
           echo "<pre>";
-          echo "Treatment: " . $row[0] . "<br />";
-          echo "Cost: " . $row[1] . "<br />";
-          echo "Ordered: " . $row[1] . "<br />";
+          echo "Treatment ID: " . $row[0] . "<br />";
+          echo "Treatment Type: " . $row[1] . "<br />";
+          echo "Patient ID: " . $row[2] . "<br />";
+          echo "Doctor ID: " . $row[3] . "<br />";
+          echo "Duration : " . $row[4] . "<br />";
           echo "</pre>";
         }
 
