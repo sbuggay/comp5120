@@ -5,25 +5,27 @@ Patient(patientID(pk),name,
         doctorID(fk refs Doctor),
         insurerID(fk refs Insurer),policyNum)
 
-Insurer(insurerID(pk),name)
+Insurer(insuranceName(pk), phone)
 
 Bed(roomID(fk refs Room),bedLabel,(roomID,bedLabel)(pk))
 
-Room(roomID(pk),accomodation)
+Room(roomID(pk),roomName (fk refs RoomCost)
 
-Doctor(doctorID(pk),name,phone)
+RoomCost(roomName(pk),RoomCost,numBeds)
 
-TreatmentType(treatmentTypeID(pk),fee)
+Doctor(doctorID(pk),name,phone,office)
 
-EmployeeType(employeeTypeID(pk),name,fee)
+TreatmentType(treatmentTypeID(pk),cost,ordered)
+
+EmployeeCost(employeeType(pk),cost)
 
 Treatment(treatmentID(pk),
           doctorID(fk refs Doctor),
           patientID(fk refs Patient),
-          treatmentTypeID(fk refs TreatmentType),
+          treatmentType(fk refs TreatmentType),
           duration)
 
 TreatmentInvolvement(treatmentID(fk refs Treatment),
-                     employeeTypeID(fk refs EmployeeType),
+                     employeeType(fk refs EmployeeType),
                      (treatmentID,employeeTypeID)(pk),
-                     num)
+                     Count)

@@ -32,9 +32,10 @@
   <div class="container">
     <div class="row">
     <div class="span6">
+    <legend>New Patient</legend>
     <form action="newpatient.php" class="well" method="post">
       <fieldset>
-        <legend>New Patient</legend>
+        
         <label>Patient ID:</label> <input type="number" name="cid"> 
         <label>name:</label> <input type="text" name="cname"> 
         <label>Street:</label> <input type="text" name="cstreet"> 
@@ -54,9 +55,10 @@
     </form>
     </div>
     <div class="span6">
+    <legend>New Treatment</legend>
     <form action="newtreatment.php" class="well" method="post">
       <fieldset>
-        <legend>New Treatment</legend>
+        
         <label>Treatment ID:</label> <input type="number" name="cid"> 
         <label>Treatment Type:</label> <input type="text" name="ctype"> 
         <label>Doctor ID:</label> <input type="text" name="cdid"> 

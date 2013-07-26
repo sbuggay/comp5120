@@ -7,12 +7,19 @@ DROP TABLE TreatmentType CASCADE;
 DROP TABLE Treatment CASCADE;
 DROP TABLE Doctor CASCADE;
 DROP TABLE TreatmentInvolvement CASCADE;
+DROP TABLE RoomCost CASCADE;
+
+CREATE TABLE RoomCost(
+	roomName varchar(20) NOT NULL,
+	roomCost integer,
+	numBeds smallint,
+	PRIMARY KEY (roomName)
+	);
 
 CREATE TABLE Room(
 	roomID integer NOT NULL,
-	roomPrivate boolean,
-	numBeds smallint,
-	Cost smallint,
+	roomName varchar(20),
+	FOREIGN KEY (roomName) REFERENCES RoomCost(roomName),
 	PRIMARY KEY (roomID)
 	);
 
@@ -32,7 +39,7 @@ CREATE TABLE Bed(
 	);
 
 CREATE TABLE Insurance(
-	InsuranceName varchar(20) NOT NULL,
+	InsuranceName varchar(21) NOT NULL,
 	phone varchar(20),
 	PRIMARY KEY (insuranceName)
 	);
@@ -60,7 +67,8 @@ CREATE TABLE Patient(
 	PRIMARY KEY (patientID),
 	FOREIGN KEY (roomID, bedLabel) REFERENCES Bed (RoomID, bedLabel),
 	FOREIGN KEY (insuranceName) REFERENCES Insurance (insuranceName),
-	FOREIGN KEY (doctorID) REFERENCES Doctor (DoctorID)
+	FOREIGN KEY (doctorID) REFERENCES Doctor (DoctorID),
+	UNIQUE (roomID,bedLabel)
 	);
 
 CREATE TABLE TreatmentType(
@@ -103,9 +111,7 @@ INSERT INTO TreatmentType VALUES
 ('RespTherapy',200,true),
 ('RoomVisit',50,false),
 ('AttendantCare',50,false),
-('DrConsult',100,true),
-('PrivateRoom',1000,false),
-('SemiPrivateRoom',500,false)
+('DrConsult',100,true)
 ;	
 
 INSERT INTO EmployeeCost VALUES
@@ -115,18 +121,22 @@ INSERT INTO EmployeeCost VALUES
 ('Staff', 25)
 ;
 
+INSERT INTO RoomCost VALUES
+('Private',1000,1),
+('SemiPrivate',500,2)
+;
 
 INSERT INTO Room VALUES
-(100, true, 1, 100),
-(101, true, 1, 100),
-(102, false, 2, 100),
-(103, false, 2, 100),
-(104, false, 2, 100),
-(200, true, 1, 100),
-(201, false, 2, 100),
-(202, false, 2, 100),
-(203, false, 2, 100),
-(204, false, 2, 100)
+(100, 'Private'),
+(101, 'Private'),
+(102, 'SemiPrivate'),
+(103, 'SemiPrivate'),
+(104, 'SemiPrivate'),
+(200, 'Private'),
+(201, 'SemiPrivate'),
+(202, 'SemiPrivate'),
+(203, 'SemiPrivate'),
+(204, 'SemiPrivate')
 ;
 
 INSERT INTO Bed VALUES

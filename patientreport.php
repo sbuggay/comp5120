@@ -105,7 +105,7 @@
         ?>
       </div>
       <div class="span6">
-        <legend>All reports</legend>
+        <legend>All patients</legend>
         <?php
         $dbh = pg_connect("host=localhost dbname=group5db user=postgres password=hendrix");
         if (!$dbh) {
@@ -122,15 +122,6 @@
           echo "<pre>";
           echo "ID: " . $row[0] . "<br />";
           echo "Name: " . $row[1] . "<br />";
-          echo "Street: " . $row[2] . "<br />";
-          echo "City: " . $row[3] . "<br />";
-          echo "State: " . $row[4] . "<br />";
-          echo "ZIP: " . $row[5] . "<br />";
-          echo "Admitted Date: " . $row[6] . "<br />";
-          echo "Discharged Date: " . $row[7] . "<br />";
-          echo "Room ID: " . $row[11] . "<br />";
-          echo "Bed Label: " . $row[12] . "<br />";
-          echo "Insurance: " . $row[9] . ", " . $row[10] . "<br />";
           echo "</pre>";
         }
 

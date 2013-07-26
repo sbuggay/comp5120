@@ -41,7 +41,7 @@
           echo("Error in connection: " . pg_last_error());
         }
 
-        $sql = "select roomid, bedlabel, roomprivate, patientid, name, discharged from room join bed using(roomid) left join patient using(roomid,bedlabel) order by roomid, bedlabel;";
+        $sql = "select roomid, bedlabel, roomName, patientid, name, discharged from room join bed using(roomid) left join patient using(roomid,bedlabel) join roomcost using (roomName) order by roomid, bedlabel;";
         $result = pg_query($dbh, $sql);
         if (!$result) {
           echo("Error in SQL query: " . pg_last_error());

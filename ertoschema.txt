@@ -1,0 +1,17 @@
+Each patient has a unique ID so they can be identified individually in the database. The room number and bed label for the patient is stored as well. The ID of the doctor who admits the patient is included with the patient's information. If the patient has insurance then the patient's database also contains the insurer's name and policy number. The patient's address is created using sub-attributes to make it easier to print out the patient's information when needed. The patient's admit date is stored and the date he/she is discharged it also stored.
+
+The Insurance Company is created as a table to keep track of the Insurance Company's information which does not change patient to patient. This makes it so that we don't have to store all the insurance company's information for each patient, but only one time per company. 
+
+The Bed table refers to the room number from Room. Each bed is determined uniquely by both it's room number and the bed label.
+
+The Room is uniquely identified by it's number. It also contains the room type to break out the different subtypes.  The roomCosts table stores the types and their costs, along with max beds.  
+
+The doctor table stores the doctor's information including ID, name, phone number and office number.
+
+TreatmentType stores the name and price of each treatment and whether or not the treament must be ordered by a doctor.
+
+The treatment table stores every treatment that occurs at the hospital.  It stores the patient, treatment type, doctor who ordered it if required, and how long that particular treatment took.  Since patients can have multiple treatments of the same type from the same doctor it must have a unique ID.  The employees each required could be stored in this table, but that would require the table to be altered if a new employee type were to be added.  Beacause of this we made the TreatmentInvolvement table.
+
+TreatmentInvolvement uses the EmployeeType and an integer to store what employees and how many of each were invlovled in a treatment.  This allows a variable number of employees for each treatment and easily adding new employee types with the table below.
+
+The EmployeeCost determines the cost of each type of employee per hour. Each type of employee will always get the same payment. Nurses cannot make more than other nurses, and doctors cannot make more than other doctors.

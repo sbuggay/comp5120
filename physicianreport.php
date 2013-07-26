@@ -30,10 +30,10 @@
   </div>
 
   <div class="container">
-
+    <legend>Get Physician Report</legend>
     <form action="<?php echo $_SERVER['PHP_SELF']; ?>" class="well" method="post">
       <fieldset>
-        <legend>Get Physician Report</legend>
+        
         <label>Physician ID:</label> <input type="number" name="cdoctorid"> 
         <br>
         <input class="btn btn-primary" type="submit" name="submit">
