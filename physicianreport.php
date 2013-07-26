@@ -76,8 +76,20 @@
 
             $result = pg_query($dbh, $sql);
             $row = pg_fetch_array($result);
+            $id = intval($row[0]);
 
-            $sql = "select patientid, patient.name, roomid, treatmenttype from doctor join patient using (doctorid) join treatment using (patientid) where treatment.doctorid=" . intval($row[0]);
+            $sql = "SELECT * FROM Doctor WHERE doctorid=" . $id;
+
+            $result = pg_query($dbh, $sql);
+            $row = pg_fetch_array($result);
+
+            echo "Physician ID: " . $row[0] . "<br>";
+            echo "Physician Name: " . $row[1] . "<br>";
+            echo "Physician Phone: " . $row[2] . "<br>";
+            echo "Physician Office: " . $row[3] . "<br>";
+
+
+            $sql = "select patientid, patient.name, roomid, treatmenttype from doctor join patient using (doctorid) join treatment using (patientid) where treatment.doctorid=" . $id;
           }
     $result = pg_query($dbh, $sql);
     if (!$result) {
