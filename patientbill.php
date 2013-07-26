@@ -16,90 +16,105 @@
       </a>
       <a class="brand" href="index.php">Bay View Community Hospital</a>
       <div class="nav-collapse collapse">
-      <ul class="nav">
-        <li><a href="index.php">Home</a></li>
-        <li><a href="modify.php">Modify</a></li>
-        <li class="active"><a href="patientbill.php">Patient Bill</a></li>
-        <li><a href="roomutilizationreport.php">Room Utilization Report</a></li>
-        <li><a href="patientreport.php">Patient Report</a></li>
-        <li><a href="physicianreport.php">Physician Report</a></li>
-        <li><a href="admin.php">Admin</a></li>
-      </ul>
+        <ul class="nav">
+          <li><a href="index.php">Home</a></li>
+          <li><a href="modify.php">Modify</a></li>
+          <li class="active"><a href="patientbill.php">Patient Bill</a></li>
+          <li><a href="roomutilizationreport.php">Room Utilization Report</a></li>
+          <li><a href="patientreport.php">Patient Report</a></li>
+          <li><a href="physicianreport.php">Physician Report</a></li>
+          <li><a href="admin.php">Admin</a></li>
+        </ul>
       </div>
     </div>
   </div>
 
   <div class="container">
     <div class="row">
-    <div class="span6">
-    <legend>Get Patient Bill</legend>
-    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" class="well" method="post">
-      <fieldset>
-        
-        <label>Patient ID:</label> <input type="number" name="cid"> 
+      <div class="span6">
+        <legend>Get Patient Bill</legend>
+        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" class="well" method="post">
+          <fieldset>
+
+            <label>Patient ID:</label> <input type="number" name="cid"> 
             <br>
             <strong>OR</strong>
             <br><br>
-        <label>Patient Name:</label> <input type="text" name="cname"> 
-        <hr>
-        <input class="btn btn-primary" type="submit" name="submit">
-      </fieldset>
-    </form>
+            <label>Patient Name:</label> <input type="text" name="cname"> 
+            <hr>
+            <input class="btn btn-primary" type="submit" name="submit">
+          </fieldset>
+        </form>
 
-    <?php
-    if ($_POST['submit']) {
-    $dbh = pg_connect("host=localhost dbname=group5db user=postgres password=hendrix");
-    if (!$dbh) {
-      echo("Error in connection: " . pg_last_error());
-    }
-    if($_POST['cname'] == '')
-    {
-      $sql = "SELECT * FROM Patient WHERE patientid=" . $_POST['cid'];
-    }
-    else
-    {
-      $sql = "SELECT * FROM Patient WHERE name=" . "'" . $_POST['cname'] . "'";
-    }
-    $result = pg_query($dbh, $sql);
-    if (!$result) {
-        echo "<div class='alert alert-error'>";
-        echo "<button type='button' class='close' data-dismiss='alert'>&times;</button>";
-        echo "Error in query";
-        echo "<br>";
-        echo (pg_last_error());
-        echo "</div>";
-    }
-    if (pg_num_rows ( $result ) == 0)
-    {
-        echo "<div class='alert alert-error'>";
-        echo "<button type='button' class='close' data-dismiss='alert'>&times;</button>";
-        echo "No results found";
-        echo "</div>";
-    }
+        <?php
+        if ($_POST['submit']) {
+          $dbh = pg_connect("host=localhost dbname=group5db user=postgres password=hendrix");
+          if (!$dbh) {
+            echo("Error in connection: " . pg_last_error());
+          }
 
-    while ($row = pg_fetch_array($result)) {
-      echo "<pre>";
-      echo "ID: " . $row[0] . "<br />";
-      echo "Name: " . $row[1] . "<br />";
-      echo "Street: " . $row[2] . "<br />";
-      echo "City: " . $row[3] . "<br />";
-      echo "State: " . $row[4] . "<br />";
-      echo "ZIP: " . $row[5] . "<br />";
-      echo "Admitted Date: " . $row[6] . "<br />";
-      echo "Discharged Date: " . $row[7] . "<br />";
-      echo "Doctor ID: " . $row[8] . "<br />";
-      echo "Policy Number: " . $row[9] . "<br />";
-      echo "Room ID: " . $row[10] . "<br />";
-      echo "Bed Label: " . $row[11] . "<br />";
-      echo "</pre>";
-    }
+          echo "Bay View Community Hospital<br>";
+          echo "200 Lakeshore Dr. Bay View, AL<br>";
+          echo(date('Y/m/d'));
+          echo "<br>";
+          echo "Statement account for:<br><br>";
 
-    pg_free_result($result);
-    pg_close($dbh);
-    }
-    ?>
-    </div>
-    <div class="span6">
+          if($_POST['cname'] == '')
+          {
+            $sql = "SELECT name, patientid, addrStreet, addrState, addrZIP, admitted, discharged FROM Patient WHERE patientid=" . $_POST['cid'];
+            $result = pg_query($dbh, $sql);
+            $row = pg_fetch_array($result);
+            echo "Patient name: " . $row[0] . " Patient #: " . $row[1] . "<br>";
+            echo "Patient address: " . $row[2] . ". " . $row[3] . " " . $row[4] . "<br>";
+            echo "Date admitted: " . $row[5] . "<br>";
+            echo "Date discharged: " . $row[6] . "<br>";
+
+            $sql = "select treatmentid, treatment.treatmenttype, treatmenttype.cost from treatment join treatmenttype using (treatmenttype) where patientid=" . $_POST['cid'];
+          }
+          else
+          {
+            $sql = "SELECT * FROM Patient WHERE name=" . "'" . $_POST['cname'] . "'";
+          }
+          $result = pg_query($dbh, $sql);
+
+
+
+          if (!$result) {
+            echo "<div class='alert alert-error'>";
+            echo "<button type='button' class='close' data-dismiss='alert'>&times;</button>";
+            echo "Error in query";
+            echo "<br>";
+            echo (pg_last_error());
+            echo "</div>";
+          }
+          if (pg_num_rows ( $result ) == 0)
+          {
+            echo "<div class='alert alert-error'>";
+            echo "<button type='button' class='close' data-dismiss='alert'>&times;</button>";
+            echo "No results found";
+            echo "</div>";
+          }
+          echo "<table class='table table-striped'>";
+          echo "<tr>";
+          echo "<th>Item code</th>";
+          echo "<th>Description</th>";
+          echo "<th>Charge</th>";
+          echo "</tr>";
+          while ($row = pg_fetch_array($result)) {
+          echo "<tr>";
+          echo "<td>" . $row[0] . "</td>";
+          echo "<td>" . $row[1] . "</td>";
+          echo "<td>" . $row[2] . "</td>";
+          echo "</tr>";
+          }
+          echo "</table>";
+
+          pg_free_result($result);
+          pg_close($dbh);
+        }
+        ?>
+      </div>
+      <div class="span6">
         <legend>All patients</legend>
         <?php
         $dbh = pg_connect("host=localhost dbname=group5db user=postgres password=hendrix");
@@ -125,7 +140,7 @@
         ?> 
 
 
-    </div>
+      </div>
     </div>
 
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>

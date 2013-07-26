@@ -174,15 +174,25 @@ INSERT INTO Doctor VALUES
 ;
 
 INSERT INTO Patient VALUES
-(1, 'Eric Kitaif', '5 Haley Ave', 'Auburn', 'Alabama', 35213, '7/5/2013', NULL, 1, 'Medicare', '115', 100, 'A'),
-(2, 'Justin Brewer', '20 Shelby Way', 'Auburn', 'Alabama', 35213, '7/10/2013', '7/20/2013', 1, 'Medicaid', '215', 102, 'A'),
-(3, 'Devan Buggay', '6 Broun St', 'Auburn', 'Alabama', 35213, '7/15/2013', NULL, 1, 'Unitedhealth Group', '3215', 200, 'A'),
-(4, 'Zach White', '34 Parker Ave', 'Auburn', 'Alabama', 35213, '7/21/2013', '7/22/2013', 1, 'Wellpoint Inc. Group', '3235', 204, 'A')
+(1, 'Eric Kitaif', '5 Haley Ave', 'Auburn', 'Alabama', 35213, '7/22/2013', NULL, 1, 'Medicare', '115', 100, 'A'),
+(2, 'Justin Brewer', '20 Shelby Way', 'Auburn', 'Alabama', 35213, '7/20/2013', '7/21/2013', 1, 'Medicaid', '215', 102, 'A'),
+(3, 'Devan Buggay', '6 Broun St', 'Auburn', 'Alabama', 35213, '7/24/2013', NULL, 1, 'Unitedhealth Group', '3215', 200, 'A'),
+(4, 'Zach White', '34 Parker Ave', 'Auburn', 'Alabama', 35213, '7/21/2013', '7/22/2013', 1, 'Wellpoint Inc. Group', '3235', 204, 'A'),
+(5, 'Pam Zirkle', '3 Parker Ave', 'Auburn', 'Alabama', 35213, '7/21/2013', '7/22/2013', 1, 'Medicare', '3235', 204, 'B'),
+(6, 'Mina Edgar', '5 College Ave', 'Auburn', 'Alabama', 35213, '7/22/2013', '7/24/2013', 1, 'Wellpoint Inc. Group', '3235', 202, 'A')
+
 ;
 
 INSERT INTO Treatment VALUES
 (1, 'Surgery1', 1, 1, 4),
-(2, 'Surgery2', 2, 2, 4),
-(3, 'XRay', 3, 3, 4),
-(4, 'Surgery1', 3, 4, 4)
+(2, 'XRay', 1, 1, 4),
+
+
+(3, 'Surgery2', 2, 2, 4),
+(4, 'XRay', 3, 3, 4),
+(5, 'Surgery1', 3, 4, 4),
+
+(6, 'XRay', 2, 3, 4),
+
+(7, 'XRay', 6, 3, 4)
 ;
