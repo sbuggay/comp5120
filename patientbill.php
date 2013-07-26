@@ -59,22 +59,16 @@
           echo "<br>";
           echo "Statement account for:<br><br>";
 
-          if($_POST['cname'] == '')
-          {
-            $sql = "SELECT name, patientid, addrStreet, addrState, addrZIP, admitted, discharged FROM Patient WHERE patientid=" . $_POST['cid'];
-            $result = pg_query($dbh, $sql);
-            $row = pg_fetch_array($result);
-            echo "Patient name: " . $row[0] . " Patient #: " . $row[1] . "<br>";
-            echo "Patient address: " . $row[2] . ". " . $row[3] . " " . $row[4] . "<br>";
-            echo "Date admitted: " . $row[5] . "<br>";
-            echo "Date discharged: " . $row[6] . "<br>";
+          $sql = "SELECT name, patientid, addrStreet, addrState, addrZIP, admitted, discharged FROM Patient WHERE patientid=" . ($_POST['cname'] == '' ? $_POST['cid'] : $_POST['cname']);
+          $result = pg_query($dbh, $sql);
+          $row = pg_fetch_array($result);
+          
+          echo "Patient name: " . $row[0] . " Patient #: " . $row[1] . "<br>";
+          echo "Patient address: " . $row[2] . ". " . $row[3] . " " . $row[4] . "<br>";
+          echo "Date admitted: " . $row[5] . "<br>";
+          echo "Date discharged: " . $row[6] . "<br>";
 
-            $sql = "select treatmenttype as type, cost from treatment join treatmenttype using(treatmenttype) where patientid = " . $_POST['cid'] . " union select employeetype as type, cost*sum(duration) as cost from treatment join treatmentinvolvement using(treatmentid) join employeecost using(employeetype) where patientid = " . $_POST['cid'] . " group by employeetype,cost union select roomname as type, (discharged-admitted)*roomcost as cost from patient join room using(roomid) join roomcost using (roomname) where patientid = " . $_POST['cid'] . " and discharged is not null;";
-          }
-          else
-          {
-            $sql = "SELECT * FROM Patient WHERE name=" . "'" . $_POST['cname'] . "'";
-          }
+          $sql = "select treatmenttype as type, cost from treatment join treatmenttype using(treatmenttype) where patientid = " . $row[1] . " union select employeetype as type, cost*sum(duration) as cost from treatment join treatmentinvolvement using(treatmentid) join employeecost using(employeetype) where patientid = " . $row[1] . " group by employeetype,cost union select roomname as type, (discharged-admitted)*roomcost as cost from patient join room using(roomid) join roomcost using (roomname) where patientid = " . $row[1] . " and discharged is not null;";
           $result = pg_query($dbh, $sql);
 
 
