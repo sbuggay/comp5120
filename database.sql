@@ -184,10 +184,10 @@ INSERT INTO Patient VALUES
 
 
 INSERT INTO treatment VALUES 
-(1, 'Surgery1', 1, 1, 4),
-(2, 'Surgery2', 2, 2, 4),
-(3, 'XRay', 3, 3, 4),
-(4, 'Surgery1', 3, 4, 4),
+(1, 'Surgery1', 1, 1, 1),
+(2, 'Surgery2', 2, 2, 1),
+(3, 'XRay', 3, 3, 1),
+(4, 'Surgery1', 3, 4, 1),
 (5, 'XRay', 1, 1, 1)
 ;
 
