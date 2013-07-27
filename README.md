@@ -14,21 +14,21 @@ BVCH Deliverables
 Conceptual model specification
 --------
 - ER diagram [[link](https://raw.github.com/sbuggay/comp5120/master/erdiagram.png)]
-- Text annotations of assumtions, constraints, etc [[link](https://raw.github.com/sbuggay/comp5120/master/assumptions.txt)]
+- Text annotations of assumtions, constraints, etc [[link](https://github.com/sbuggay/comp5120/blog/master/assumptions.txt)]
 
 Implementation model specification
 --------
 - Relational schemas [[link](https://github.com/sbuggay/comp5120/blob/master/relationalschema.txt)]
 - Description of how the ER model was translated ino the listed schemas [[link](https://raw.github.com/sbuggay/comp5120/master/ertoschema.txt)]
 - Text description of normalization [[link](https://github.com/sbuggay/comp5120/blob/master/normalizations.txt)]
-- Text annotations of assumptions, constraints, etc [[link](https://raw.github.com/sbuggay/comp5120/master/assumptions.txt)]
+- Text annotations of assumptions, constraints, etc [[link](https://github.com/sbuggay/comp5120/blog/master/assumptions.txt)]
 
 Database implementation
 --------
-- Create table commands  [[link](https://github.com/sbuggay/comp5120/blob/database.sql)]
-- Insert commands [[link](https://github.com/sbuggay/comp5120/blog/database.sql)]
+- Create table commands  [[link](https://github.com/sbuggay/comp5120/blob/master/database.sql)]
+- Insert commands [[link](https://github.com/sbuggay/comp5120/blob/master/database.sql)]
 - Source Code [[link](https://github.com/sbuggay/comp5120)]
-- Generated Output
+- Generated Output [[link](http://devel-base.net/comp5120/)]
 - URL [[link](http://devel-base.net/comp5120/)]
 
 BVHC forms and reports
@@ -40,8 +40,9 @@ BVHC forms and reports
 
 Technologies Used
 --------
-- PHP5
-- Apache2
+- Debian 3.2.41
+- PHP 5.4.4
+- Apache 2.2.22
 - PostgresQL 9.1
 - jQuery 1.7
 - Bootstrap 2
