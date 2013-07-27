@@ -13,7 +13,7 @@ BVCH Deliverables
 
 Conceptual model specification
 --------
-- ER diagram [[link](https://raw.github.com/sbuggay/comp5120/master/erdiagram.pdf)] - (pdf download)
+- ER diagram [[link](https://raw.github.com/sbuggay/comp5120/master/erdiagram.png)]
 - Text annotations of assumtions, constraints, etc [[link](https://raw.github.com/sbuggay/comp5120/master/assumptions.txt)]
 
 Implementation model specification
