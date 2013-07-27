@@ -1,9 +1,12 @@
+Bay View Community Hopsital Database Project
+========
+
 Authors
 --------
-Devan Buggay
-Eric Kitaif
-Justin Brewer
-Zachary White
+- Devan Buggay
+- Eric Kitaif
+- Justin Brewer
+- Zachary White
 
 BVCH Deliverables
 --------
