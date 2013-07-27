@@ -14,14 +14,14 @@ BVCH Deliverables
 Conceptual model specification
 --------
 - ER diagram [[link](https://raw.github.com/sbuggay/comp5120/master/erdiagram.png)]
-- Text annotations of assumtions, constraints, etc [[link](https://github.com/sbuggay/comp5120/blog/master/assumptions.txt)]
+- Text annotations of assumtions, constraints, etc [[link](https://github.com/sbuggay/comp5120/blob/master/assumptions.txt)]
 
 Implementation model specification
 --------
 - Relational schemas [[link](https://github.com/sbuggay/comp5120/blob/master/relationalschema.txt)]
 - Description of how the ER model was translated ino the listed schemas [[link](https://raw.github.com/sbuggay/comp5120/master/ertoschema.txt)]
 - Text description of normalization [[link](https://github.com/sbuggay/comp5120/blob/master/normalizations.txt)]
-- Text annotations of assumptions, constraints, etc [[link](https://github.com/sbuggay/comp5120/blog/master/assumptions.txt)]
+- Text annotations of assumptions, constraints, etc [[link](https://github.com/sbuggay/comp5120/blob/master/assumptions.txt)]
 
 Database implementation
 --------
